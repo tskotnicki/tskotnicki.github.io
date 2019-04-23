@@ -41,12 +41,12 @@
         function testAPI() {
             FB.api('/me?fields=name,email', function(response){
                 if(response && !response.error) {
-                    showdata(response);
+                    buildProfile(response);
                 }
             });
         }
 
-        function showdata(user) {
+        function buildProfile(user) {
             let profile = `
                 <ul class="list-group">
 					<li class="list-group-item">Name: ${user.name}</li>
