@@ -39,24 +39,25 @@
         }
 
         function testAPI() {
-            FB.api('/me?fields=name,email', function(response){
+            FB.api('/me?fields=email,first_name,last_name', function(response){
                 if(response && !response.error) {
-                    buildProfile(response);
+                    showdata(response);
                 }
             });
         }
 
-        function buildProfile(user) {
-            let profile = `
-                <h3>${user.name}</h3>
-                <ul class="list-group">
-                    <li class="list-group-item">User ID: ${user.id}</li>
-                    <li class="list-group-item">Email: ${user.email}</li>
-                </ul>
-            `;
-
-            document.getElementById('profile').innerHTML = profile;
-        }
+         function showdata(user){
+		let profil = `
+		<ul class="list-group">
+        <li class="list-group-item">Imie: ${user.first_name}</li>
+        <li class="list-group-item">Nazwisko: ${user.last_name}</li>
+		<li class="list-group-item">Email: ${user.email}</li>
+        <li class="list-group-item">ID: ${user.id}</li>
+        
+      </ul>
+    `;
+    document.getElementById('profile').innerHTML = profile;
+  }
 
         function setElements(isLoggedIn) {
             if (isLoggedIn) {
